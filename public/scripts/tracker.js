@@ -153,20 +153,33 @@ async function loadHabits() {
     try {
         console.log("loadHabits()");
         const response = await fetch('/api/habits');
-        const habits_object = await response.json();
-        const habits_array = habits_object.habits;
+        const habits_array = await response.json();
+        // const habits_array = habits_object.habits;
 
+        console.log("At Tracker collected: ");
         console.log(typeof(habits_array));
         console.log(habits_array);
         
         // Get the dropdown select element
         const habitSelect = document.getElementById('habitSelect');
         const newHabitOption = habitSelect.lastElementChild;
+        const legend = document.getElementById('habits-legend');
         
         habits_array.forEach(habit => {
+            // Create the option for the dropdown display
             const option = document.createElement('option');
-            option.textContent = habit;
+            option.textContent = habit.name;
             habitSelect.insertBefore(option, newHabitOption);
+
+            // Add the habit to the legend
+            const li = document.createElement('li');
+            li.textContent = habit.name;
+            const spanEl = document.createElement('span');
+            spanEl.setAttribute('class', 'dot');
+            spanEl.style.backgroundColor = habit.color;
+            li.appendChild(spanEl);
+            legend.appendChild(li);
+
         });
         console.log("--- Loaded habits --- ");
     } catch (error) {

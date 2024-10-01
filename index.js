@@ -24,17 +24,23 @@ app.get("/", (req,res) => {
 // Fetch all registered habits from database
 app.get('/api/habits', async (req, res) => {
     try {
-        const names = {};
-        const query = `SELECT name FROM habits`;
+        // const names = {};
+        const query = `SELECT name, color FROM habits`;
 
         db.all(query, [], (err, rows) => {
             if (err) {
                 console.error('Error fetching habit names', err.message);
                 return res.status(500).send('Error fetching habit names.');
             }
-            names.habits = rows.map(row => row.name);
-            console.log(names);
-            res.json(names);
+            const habits = rows.map(row => ({
+                name: row.name,
+                color: row.color
+            }));
+
+            // names.habits = rows.map(row => row.name);
+            console.log("At API collected: ");
+            console.log(habits);
+            res.json(habits);
         });
     } catch (error) {
         console.error('Error fetching habits:', error);
