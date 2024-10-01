@@ -8,7 +8,7 @@ body {
 .top-container {
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     height: 100vh;
     transition: grid-template-columns 0.3s ease-in-out;
 }
@@ -224,3 +224,34 @@ footer {
     padding: 10px;
 }
 
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+#habits-legend-container {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+#habits-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#habits-legend li {
+    display: flex;
+    align-items: center;
+    margin: 0 10px 10px 0;
+    white-space: nowrap;
+}
