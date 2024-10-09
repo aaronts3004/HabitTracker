@@ -216,20 +216,25 @@ table caption {
     background-color: #2980b9;
 }
 
-footer {
-    grid-column: 1 / -1;
-    background-color: #34495e;
-    color: #ecf0f1;
-    text-align: center;
-    padding: 10px;
-}
-
 .dot {
     display: inline-block;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     margin-left: 5px;
+}
+
+.dots-container {
+    display: flex; /* Display flex to align dots horizontally */
+    gap: 5px; /* Space between dots */
+    margin-top: 10px;
+}
+
+.dot-mark {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 
 #habits-legend-container {
@@ -254,4 +259,12 @@ footer {
     align-items: center;
     margin: 0 10px 10px 0;
     white-space: nowrap;
+}
+
+footer {
+    grid-column: 1 / -1;
+    background-color: #34495e;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 10px;
 }
